@@ -1,3 +1,74 @@
+.nav-ul li {
+    display:inline-block;
+    padding: 4px 7px 2px 4px;
+    margin: 4px;
+}
+
+.FooterClass {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    background-color: skyblue;
+    height: 46px;
+}
+
+.Register {
+    margin-left : 40%;
+}
+.login {
+    margin-left: 30%;
+    margin-top:100px;
+    padding:2px;
+    align-items:flex-start;}
+.btn-sm {
+    margin-left: 0;
+    margin-right: 58%;
+    width: 200px;
+    background-color: coral;
+    transform-origin: left;
+    border-radius: 12px;
+}
+.h1_div {
+    margin-left: 0;
+    padding: 0;
+}
+.Register button {
+    margin-block-start: auto;
+    margin-left: -50%;
+    padding: 0;
+    background-color:skyblue;
+    width : 150px;
+    border : 1px solid;
+    cursor : pointer;
+    height : 20px;
+    border-radius : 2px;
+}
+.inputBox {
+    margin: 25px;
+    padding: 7px;
+    width: 300px;
+    border: 1px solid skyblue;
+    display: block;
+}
+.DivMain {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-ul li a {
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.nav-ul {
+    padding:5px;
+    margin:0;
+    background-color: skyblue;
+}
+
 .App {
   text-align: center;
 }
