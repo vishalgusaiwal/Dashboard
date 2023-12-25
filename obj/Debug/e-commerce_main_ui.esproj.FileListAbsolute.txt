@@ -1,2 +1,4 @@
 C:\Users\visha\source\repos\e-commerce_main_ui\obj\Debug\e-commerce_main_ui.esproj.SuggestedBindingRedirects.cache
 C:\Users\visha\source\repos\e-commerce_main_ui\obj\Debug\e-commerce_main_ui.esproj.CoreCompileInputs.cache
+C:\Users\visha\source\repos\vishalgusaiwal\Dashboard\obj\Debug\e-commerce_main_ui.esproj.SuggestedBindingRedirects.cache
+C:\Users\visha\source\repos\vishalgusaiwal\Dashboard\obj\Debug\e-commerce_main_ui.esproj.CoreCompileInputs.cache

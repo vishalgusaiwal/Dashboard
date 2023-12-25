@@ -7,7 +7,7 @@
   "type": "chrome",
   "request": "launch",
   "url": "http://localhost:3000",
-  "webRoot": "C:\\Users\\visha\\source\\repos\\e-commerce_main_ui"
+  "webRoot": "C:\\Users\\visha\\source\\repos\\vishalgusaiwal\\Dashboard"
 }</LaunchJsonTarget>
   </PropertyGroup>
 </Project>

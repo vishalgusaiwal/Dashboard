@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [Email, setEmail] = useState('');
     const [passWord, setPassWord] = useState('');
+    const navigate = useNavigate();
     const login = async () => {
         let result = await fetch("http://localhost:5020/login", {
             method: 'post',
@@ -13,6 +15,14 @@ const Login = () => {
         });
         result = await result.json();
         console.warn(JSON.stringify(result));
+        if (result) {
+            if (result.result === undefined) {
+                localStorage.setItem("user", JSON.stringify(result));
+                navigate("/");
+            } else {
+                alert("Login Failed");
+            }
+        }
     }
     return (
         <div className='login'>
