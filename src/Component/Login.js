@@ -15,9 +15,10 @@ const Login = () => {
         });
         result = await result.json();
         console.warn(JSON.stringify(result));
-        if (result) {
+        if (result.auth) {
             if (result.result === undefined) {
-                localStorage.setItem("user", JSON.stringify(result));
+                localStorage.setItem("user", JSON.stringify(result.user));
+                localStorage.setItem("auth", JSON.stringify(result.auth));
                 navigate("/");
             } else {
                 alert("Login Failed");

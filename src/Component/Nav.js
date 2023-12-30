@@ -15,7 +15,7 @@ export default function Nav() {
                 auth ?
                 <ul className="nav-ul">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/update">Update Profile</Link></li>
+                    <li><Link to={"/update/-1"}>Update Product</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
                     <li><Link to="/addProduct">Add Product</Link></li>
                     <li><Link to="/login" onClick={logout}>Logout</Link></li>

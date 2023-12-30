@@ -22,20 +22,23 @@ export default function SignUp() {
         result = await result.json();
         console.warn(result);
         if (result) {
-            localStorage.setItem("user", JSON.stringify(result));
+            localStorage.setItem("user", JSON.stringify(result.user));
+            localStorage.setItem("auth", JSON.stringify(result.auth));
             navigate("/");
         }
     };
     return (
         <>
-            <div className="h1_div">
-                <h1>Sign Up</h1>
-            </div>
-            <div className="Register">
-                <input placeholder="User name" type="text" className="inputBox" value={userName} onChange={(e) => { setUserName(e.target.value) }} />
-                <input placeholder="Email" type="text" className="inputBox" value={Email} onChange={(e) => { setEmail(e.target.value) }} />
-                <input placeholder="PassWord" type="password" className="inputBox" value={PassWord} onChange={(e) => { setPassWord(e.target.value) }} />
-                <button type="button" onClick={CollectData}> Submit </button>
+            <div className="signUp">
+                <div className="h1_div">
+                    <h1>Sign Up</h1>
+                </div>
+                <div className="Register">
+                    <input placeholder="User name" type="text" className="inputBox" value={userName} onChange={(e) => { setUserName(e.target.value) }} />
+                    <input placeholder="Email" type="text" className="inputBox" value={Email} onChange={(e) => { setEmail(e.target.value) }} />
+                    <input placeholder="PassWord" type="password" className="inputBox" value={PassWord} onChange={(e) => { setPassWord(e.target.value) }} />
+                    <button type="button" onClick={CollectData}> Submit </button>
+                </div>
             </div>
         </>
     );

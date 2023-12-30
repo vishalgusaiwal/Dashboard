@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const AddProduct = () => {
+const UpdateProduct = () => {
     const [cmpName, setcmpName] = useState('');
     const [modelNo, setmodelNo] = useState('');
     const [priceRa, setpriceRa] = useState('');
-    const [error, setError] = useState(false);
-    const productAdd = async () => {
-        if (!modelNo || !priceRa || !cmpName) {
-            setError(true);
-            return false;
+    const params = useParams();
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.warn(params);
+        if (params.id === "-1") {
+            navigate("/");
+        } else {
+            getProductDetailsById();
         }
-        let result = await fetch("http://localhost:5020/add-product", {
-            method: 'post',
+        //getProductDetailsById();
+    }, []);
+    const getProductDetailsById = async () => {
+        let result = await fetch(`http://localhost:5020/product/${params.id}`, {
+            headers: {
+                authorization: "bearer " + JSON.parse(localStorage.getItem("auth"))
+            }
+        });
+        result = await result.json();
+        console.warn(result);
+        setcmpName(result.company);
+        setmodelNo(result.model);
+        setpriceRa(result.price);
+    }
+    const UpdateProducts = async () => {
+        let result = await fetch(`http://localhost:5020/products/${params.id}`, {
+            method: 'put',
             body: JSON.stringify({
                 model: modelNo,
                 price: priceRa,
-                company: cmpName,
-                productID: JSON.parse(localStorage.getItem("user"))._id
+                company: cmpName
             }),
             headers: {
                 'Content-type': 'application/json',
@@ -25,10 +44,12 @@ const AddProduct = () => {
         });
         result = await result.json();
         console.warn(JSON.stringify(result));
+        if (result.modifiedCount == undefined) console.warn("Failed to Update");
+        else navigate("/");
     }
     return (
-        <div>
-            <h1>List your product and get high sell</h1>
+        <div className="container py-5">
+            <h1>Update Product</h1>
             <div className="from_div">
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Model Number</label>
@@ -41,11 +62,6 @@ const AddProduct = () => {
                         aria-describedby="emailHelp"
                         placeholder="Enter Model Number"
                     />
-                    {
-                        error && !modelNo && <small id="emailHelp" className="form-text text-danger">
-                            Please Enter a valid model number.
-                        </small>
-                    }
                 </div>
                 <div className="form-group">
                     <label htmlFor="PriceControl">Price</label>
@@ -58,11 +74,6 @@ const AddProduct = () => {
                         aria-describedby="emailHelp"
                         placeholder="Enter Price"
                     />
-                    {
-                        error && !priceRa && <small id="priceHelp" className="form-text text-danger">
-                            Please Enter a valid price.
-                        </small>
-                    }
                 </div>
                 <div className="form-group">
                     <label htmlFor="CompanyName">Company Name</label>
@@ -75,16 +86,11 @@ const AddProduct = () => {
                         aria-describedby="emailHelp"
                         placeholder="Enter Company Name"
                     />
-                    {
-                        error && !cmpName && <small id="companyHelp" className="form-text text-danger">
-                            Please Enter a valid company name.
-                        </small>
-                    }
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={productAdd}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={UpdateProducts}>Submit</button>
             </div>
         </div>
     );
 }
 
-export default AddProduct;
+export default UpdateProduct;
